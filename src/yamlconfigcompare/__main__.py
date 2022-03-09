@@ -10,11 +10,11 @@ the sample configuration file that does get checked into GIT. There is also a di
 parameter, --dir, that is also passed just in-case your config files are in a directory.
 If your config files are at the top of the directory structure just pass in blank
 
-- repo: https://github.com/akocs/config-compare
-    rev: main
+- repo: https://github.com/akocs/yaml-config-compare
+    rev: v0.1.0
     hooks:
-      - id: config-compare
-        name: config-compare
+      - id: yaml-config-compare
+        name: yaml-config-compare
         description: Compare the projects sample config keys to developers config file
         language: python
         language_version: 3.8.6
@@ -30,13 +30,13 @@ or to run it locally from the .git/hooks directory
 
  - repo: local
     hooks:
-      - id: config-compare
-        name: config-compare
+      - id: yaml-config-compare
+        name: yaml-config-compare
         description: Compare the projects sample config keys to developers config file
         language: python
         language_version: 3.8.6
         additional_dependencies: [pyyaml]
-        entry: python .git/hooks/configcompare.py
+        entry: python .git/hooks/yamlconfigcompare.py
         args:
           [
             "--dir=deployment",
