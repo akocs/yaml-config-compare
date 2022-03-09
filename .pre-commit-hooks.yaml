@@ -1,0 +1,7 @@
+# Copyright 2022 Tony Akocs
+# SPDX-License-Identifier: MIT
+- id: yaml-config-compare
+  name: Compare config files
+  entry: yaml-config-compare
+  language: python
+  types: [python]
