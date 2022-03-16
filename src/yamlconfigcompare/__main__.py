@@ -101,8 +101,11 @@ def main(argv: Sequence[str] = None) -> int:
     if (isEqual):
         print("Config files are same")
     else:
-        missing = set(configKeys).difference(configSampleKeys)
-        print(f"Missing values in {configSampleFile}: {missing}")
+        list_difference = []
+        for element in configSampleKeys:
+            if element not in configKeys:
+                list_difference.append(element)
+        print(f"Missing values in {configSampleFile}: {list_difference}")
         return 1
 
 if __name__ == "__main__":
