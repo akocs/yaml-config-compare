@@ -7,7 +7,7 @@ with open('README.md', encoding='utf-8') as fh:
 
 setuptools.setup(
     name='yaml-config-compare',
-    author='Tony Akocs',
+    author='Tony Akocs',    
     author_email='kaakocs@amazon.com',
     description="""Compare the projects sample config keys to developers config file.""",  # noqa: E501
     long_description=long_description,

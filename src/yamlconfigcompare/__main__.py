@@ -11,13 +11,12 @@ parameter, --dir, that is also passed just in-case your config files are in a di
 If your config files are at the top of the directory structure just pass in blank
 
 - repo: https://github.com/akocs/yaml-config-compare
-    rev: v0.1.0
+    rev: v0.3.0
     hooks:
       - id: yaml-config-compare
         name: yaml-config-compare
         description: Compare the projects sample config keys to developers config file
         language: python
-        language_version: 3.8.6
         additional_dependencies: [pyyaml]
         args:
           [
@@ -34,7 +33,6 @@ or to run it locally from the .git/hooks directory
         name: yaml-config-compare
         description: Compare the projects sample config keys to developers config file
         language: python
-        language_version: 3.8.6
         additional_dependencies: [pyyaml]
         entry: python .git/hooks/yamlconfigcompare.py
         args:
@@ -96,14 +94,18 @@ def main(argv: Sequence[str] = None) -> int:
     configSampleFile = args.file2
     configKeys = __loadConfigFile(directory, configFile)
     configSampleKeys = __loadConfigFile(directory, configSampleFile)
+    
+    # remove duplicates
+    configKeys = list( set( configKeys ) )
+    configSampleKeys = list( set( configSampleKeys ) )
 
     isEqual = __checkIfEqual(configKeys, configSampleKeys)
     if (isEqual):
         print("Config files are same")
     else:
         list_difference = []
-        for element in configSampleKeys:
-            if element not in configKeys:
+        for element in configKeys:
+            if element not in configSampleKeys:
                 list_difference.append(element)
         print(f"Missing values in {configSampleFile}: {list_difference}")
         return 1
