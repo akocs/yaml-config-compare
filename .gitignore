@@ -5,6 +5,9 @@ dist/
 *.egg-info/
 version.txt
 .vscode/
+.DS_Store
+src/.DS_Store
+src/yamlconfigcompare/.DS_Store
 
 # test files and directory
 config-sample.yaml
